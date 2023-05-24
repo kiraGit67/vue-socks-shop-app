@@ -11,8 +11,21 @@
 
 <body>
     <div id="app">
-        <h1>{{ product }}</h1>
-        <p>I love these {{ product }}</p>
+        <div class="nav-bar"></div>
+        <div class="product-display">
+            <div class="product-container">
+                <div class="product-image">
+                    <!-- Product Image -->
+                    <img :src="image" :alt="alt" :title="alt">
+                </div>
+                <div class="product-info">
+                    <h1>{{ product }}</h1>
+                    <p>I love these {{ product }}</p>
+                </div>
+            </div>
+        </div>
+
+
     </div>
     <!-- Import Vue Class -->
     <script src="vue.js"></script>
