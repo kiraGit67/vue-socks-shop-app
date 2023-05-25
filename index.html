@@ -17,24 +17,27 @@
             <div class="product-container">
                 <div class="product-image">
                     <!-- Product Image -->
-                    <img :src="image" :alt="alt" :title="alt">
+                    <img :src="image" :class="{ 'out-of-stock-img': !inStock }" :alt="alt" :title="alt">
                 </div>
                 <div class="product-info">
                     <h1>{{ product }}</h1>
-                    <p v-if="inventory > 10">In Stock</p>
-                    <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out!</p>
+                    <p v-if="inventory > 10 && inStock">In Stock</p>
+                    <p v-else-if="inventory <= 10 && inventory > 0 && inStock">Almost sold out!</p>
                     <p v-else>Out of Stock</p>
                     <ul>
                         <li v-for="detail in details">{{ detail }}</li>
                     </ul>
-                    <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">{{
-                        variant.color }}
+                    <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)"
+                        class="color-circle" :class="{ active: activeClass }"
+                        :style="{ backgroundColor: variant.color }">
                     </div>
                     <ul>
                         <li v-for="size in sizes" :key="size.id">{{ size.id }} - {{ size.description }}</li>
                     </ul>
-                    <button class="button" v-on:click="add2Cart">Add2Cart</button>
-                    <button class="button" @click="removeFromCart">Remove From Cart</button>
+                    <button class="button" :class="{ disabledButton: !inStock }" v-on:click="add2Cart"
+                        :disabled="!inStock">Add2Cart</button>
+                    <button class="button" :class="{ disabledButton: !inStock }" @click="removeFromCart"
+                        :disabled="!inStock">Remove From Cart</button>
                 </div>
             </div>
         </div>
