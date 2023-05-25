@@ -40,8 +40,14 @@ body {
   border-radius: 50%;
 }
 
+.active {
+  border-color: white;
+  border-width: 3px;
+}
+
 .disabledButton {
   background-color: #d8d8d8;
+  color: red;
   cursor: not-allowed;
 }
 
