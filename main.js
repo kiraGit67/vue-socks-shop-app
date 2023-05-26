@@ -40,7 +40,9 @@ const app = Vue.createApp({
   },
   methods: {
     add2Cart() {
-      this.cart++;
+      if (this.cart < this.variants[this.selectedVariant].quantity) {
+        this.cart++;
+      }
     },
     removeFromCart() {
       if (this.cart > 0) {
