@@ -31,9 +31,9 @@ app.component("product-display", {
                     class="color-circle" :class="{ active: activeClass }"
                     :style="{ backgroundColor: variant.color }">
                 </div>
-                <ul>
-                    <li v-for="size in sizes" :key="size.id">{{ size.id }} - {{ size.description }}</li>
-                </ul>
+                
+                <product-sizes :sizes="sizes"></product-sizes>
+
                 <button class="button" :class="{ disabledButton: !inStock }" v-on:click="add2Cart"
                     :disabled="!inStock">Add2Cart</button>
                 <button class="button" :class="{ disabledButton: !inStock }" @click="removeFromCart"
