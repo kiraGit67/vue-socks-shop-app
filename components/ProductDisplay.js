@@ -40,6 +40,8 @@ app.component("product-display", {
                     :disabled="!inStock">Remove From Cart</button>
             </div>
         </div>
+        <review-list :reviews="reviews" v-if="reviews.length"></review-list>
+        <review-form @review-submitted="addReview"></review-form>
     </div>`,
   data() {
     return {
@@ -72,6 +74,7 @@ app.component("product-display", {
         { id: "XL", description: "xtraLarge" },
         { id: "XXL", description: "doubleXtraLarge" },
       ],
+      reviews: [],
     };
   },
   methods: {
@@ -96,6 +99,9 @@ app.component("product-display", {
     },
     updateVariant(index) {
       this.selectedVariant = index;
+    },
+    addReview(review) {
+      this.reviews.push(review);
     },
   },
   computed: {
