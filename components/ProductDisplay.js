@@ -25,9 +25,8 @@ app.component("product-display", {
 
                 <p>Shipping: {{ shipping }}</p>
 
-                <ul>
-                    <li v-for="detail in details">{{ detail }}</li>
-                </ul>
+                <product-details :details="details"></product-details>
+                
                 <div v-for="(variant, index) in variants" :key="variant.id" @mouseover="updateVariant(index)"
                     class="color-circle" :class="{ active: activeClass }"
                     :style="{ backgroundColor: variant.color }">
