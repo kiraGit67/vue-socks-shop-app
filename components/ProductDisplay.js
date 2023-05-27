@@ -1,6 +1,12 @@
 "use strict";
 
 app.component("product-display", {
+  props: {
+    premium: {
+      type: Boolean,
+      required: true,
+    },
+  },
   template:
     /* html */
     `<div class="product-display">
@@ -16,6 +22,9 @@ app.component("product-display", {
                     v-else-if="inStock && variants[selectedVariant].quantity > 0 && variants[selectedVariant].quantity <= 10">
                     Almost sold out!</p>
                 <p v-else>Out of Stock</p>
+
+                <p>Shipping: {{ shipping }}</p>
+
                 <ul>
                     <li v-for="detail in details">{{ detail }}</li>
                 </ul>
@@ -96,6 +105,9 @@ app.component("product-display", {
     },
     isOnSale() {
       return this.onSale === true ? this.title + " is on sale" : this.title;
+    },
+    shipping() {
+      return this.premium ? "Free" : 2.99;
     },
   },
 });
