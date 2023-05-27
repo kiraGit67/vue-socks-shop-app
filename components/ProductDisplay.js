@@ -76,14 +76,20 @@ app.component("product-display", {
   },
   methods: {
     add2Cart() {
+      this.$emit("add-to-cart", this.variants[this.selectedVariant].id);
+      /*
       if (this.cart < this.variants[this.selectedVariant].quantity) {
         this.cart++;
       }
+      */
     },
     removeFromCart() {
+      this.$emit("remove-from-cart", this.variants[this.selectedVariant].id);
+      /*
       if (this.cart > 0) {
         this.cart--;
       }
+      */
     },
     updateImage(variantImage) {
       this.image = variantImage;
